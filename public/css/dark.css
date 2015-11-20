@@ -1,0 +1,6 @@
+/* Styles applied to all views when the "dark" theme selected in HipChat */
+
+body {
+    background: #000;
+    color: #fff;
+}

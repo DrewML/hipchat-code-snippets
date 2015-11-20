@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="{{furl '/css/base.css'}}" type="text/css">
+    {{#if isDark}}
+    <link rel="stylesheet" href="{{furl '/css/dark.css'}}" type="text/css">
+    {{/if}}
+    <meta name="acpt" content="{{signed_request}}">
+</head>
+<body>
+    {{{body}}}
+
+    {{#unless disableXDM}}
+    <script src="{{furl '/js/xdm-iframe.min.js'}}"></script>
+    {{/unless}}
+    <script src="{{furl '/dist/bundle.js'}}"></script>
+</body>
+</html>

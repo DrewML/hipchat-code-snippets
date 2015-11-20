@@ -1,0 +1,7 @@
+/* Styles shared between all pages */
+
+body {
+    background: #fff;
+    color: #000;
+    padding: 3%;
+}

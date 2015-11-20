@@ -1,0 +1,59 @@
+{
+    "key": "codesnippet",
+    "name": "Code Snippet",
+    "description": "Send code snippets with syntax highlighting",
+    "links": {
+        "self": "{{localBaseUrl}}/atlassian-connect.json",
+        "homepage": "{{localBaseUrl}}/atlassian-connect.json"
+    },
+    "capabilities": {
+        "hipchatApiConsumer": {
+            "scopes": [
+                "send_notification",
+                "view_group",
+                "view_room"
+            ]
+        },
+        "installable": {
+            "callbackUrl": "{{localBaseUrl}}/installable"
+        },
+        "configurable": {
+            "url": "{{localBaseUrl}}/config"
+        },
+        "dialog": [
+            {
+                "key": "codesnippet.dialog.add",
+                "title": {
+                    "value": "Post Code Snippet"
+                },
+                "url": "{{localBaseUrl}}/ui/add-snippet",
+                "options" : {
+                    "primaryAction": {
+                        "key": "codesnippet.button.post",
+                        "name": {
+                            "value": "Post Snippet"
+                        }
+                    },
+                    "secondaryActions": [],
+                    "hint": {
+                        "value": "Code will be viewable by anyone in the room"
+                    },
+                    "size": {
+                        "height": "247px",
+                        "width": "552px"
+                    }
+                }
+            }
+        ],
+        "action": [
+            {
+                "key": "codesnippet.action.add",
+                "name": {
+                    "value": "Post Code Snippet"
+                },
+                "target": "codesnippet.dialog.add",
+                "location": "hipchat.input.action"
+            }
+        ]
+    }
+}
