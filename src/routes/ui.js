@@ -1,4 +1,3 @@
-import qs from 'querystring';
 import cors from 'cors';
 import {Router} from 'express';
 

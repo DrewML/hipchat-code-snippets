@@ -3,7 +3,7 @@ import rp from 'request-promise';
 const API_BASE = `https://api.github.com/gists`;
 
 class GistAPI {
-    getURI(relPath) {
+    getURI(relPath = '') {
         return `${API_BASE}${relPath}`;
     }
 
@@ -11,7 +11,7 @@ class GistAPI {
         return rp({
             ...opts,
             method: method.toUpperCase(),
-            json: method.toUpperCase() === 'POST',
+            json: true,
             headers: {
                 'User-Agent': 'HipChat-Snippets-Addon'
             }
@@ -24,7 +24,7 @@ class GistAPI {
 
     createAnon({descrip = 'HipChat', isPublic = true, ext = 'js', code}) {
         return this.request('post', {
-            uri: this.getURI('/'),
+            uri: this.getURI(),
             body: {
                 description: descrip,
                 public: isPublic,
