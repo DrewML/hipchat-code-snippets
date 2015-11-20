@@ -1,10 +1,19 @@
-const $ = document.querySelector.bind(document);
-const acpt = $('[name="acpt"]').getAttribute('content');
+const acpt = $('[name="acpt"]').attr('content');
 
-console.log(`Token is: ${acpt}`);
+function postSnippet() {
+    const code = $('.code').val();
+    return $.ajax({
+        type: 'POST',
+        url: '/api/snippets/add',
+        contentType: 'application/json',
+        headers: { 'X-acpt': acpt },
+        data: JSON.stringify({ code }),
+        processData: false
+    });
+}
 
 AP.register({
     'dialog-button-click': (e, close) => {
-        close();
+        postSnippet().then(() => close());
     }
-})
+});

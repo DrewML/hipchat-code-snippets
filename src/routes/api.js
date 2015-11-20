@@ -18,7 +18,9 @@ export function register(app, addon) {
         gist.createAnon({
             code: req.body.code
         }).then(gistRes => {
-            res.json(gistRes);
+            res.status(200).send();
+            
+            // Send Card to HipChat here
         }).catch(err => genericErrHandler(err, res));
     });
 
