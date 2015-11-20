@@ -1,18 +1,10 @@
-<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.2/ace.js"></script>
-<script src="//aui-cdn.atlassian.com/aui-adg/5.9.3/js/aui.js"></script>
-<script src="//aui-cdn.atlassian.com/aui-adg/5.9.3/js/aui-experimental.js"></script>
-<link rel="stylesheet" type="text/css" href="//aui-cdn.atlassian.com/aui-adg/5.9.3/css/aui.css"/>
-<link rel="stylesheet" type="text/css" href="//aui-cdn.atlassian.com/aui-adg/5.9.3/css/aui-experimental.css"/>
-
-<section class="content">
-    <div id="editor"></div>
-    <form class="language-selection aui">
-        <aui-label for="select-language">Language:</aui-label>
-        <aui-select id="select-language" name="product" no-empty-value placeholder="Start typing a language">
-            <aui-option></aui-option>
-            {{#each languages}}
-            <aui-option value="{{this.mode}}">{{this.name}}</aui-option>
-            {{/each}}
-        </aui-select>
-    </form>
-</section>
+<div id="editor"></div>
+<form class="language-selection aui">
+    <aui-label for="select-language">Language:</aui-label>
+    <aui-select id="select-language" name="product" no-empty-value placeholder="Start typing a language">
+        <aui-option></aui-option>
+        {{#each languages}}
+        <aui-option value="{{this.mode}}">{{this.name}}</aui-option>
+        {{/each}}
+    </aui-select>
+</form>
