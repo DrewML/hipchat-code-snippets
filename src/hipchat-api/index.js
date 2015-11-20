@@ -23,6 +23,12 @@ class HipchatAPI {
         });
     }
 
+    getUser(userID, token) {
+        return this.request('get', token, {
+            uri: this.getURI(`/user/${userID}`)
+        });
+    }
+
 }
 
 export default () => new HipchatAPI();

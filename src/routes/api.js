@@ -26,9 +26,11 @@ export function register(app, addon) {
                 const token = auth.access_token;
                 const roomId = req.clientInfo.roomId;
 
-                return hipchat.sendRoomNotification(roomId, token, {
-                    format: 'html',
-                    message: `Someone created a gist! <a href="${gistRes.html_url}">Check it out here</a>`
+                return hipchat.getUser(req.identity.userId, token).then(user => {
+                    return hipchat.sendRoomNotification(roomId, token, {
+                        format: 'html',
+                        message: `Someone created a gist! <a href="${gistRes.html_url}">Check it out here</a>`
+                    });
                 });
             });
         }).catch(err => genericErrHandler(err, res));
