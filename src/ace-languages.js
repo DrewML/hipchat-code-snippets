@@ -1,0 +1,101 @@
+export default [{
+    name: 'JavaScript',
+    ext: 'js',
+    mode: 'javascript'
+}, {
+    name: 'CSS',
+    ext: 'css',
+    mode: 'css'
+}, {
+    name: 'D',
+    ext: 'd',
+    mode: 'd'
+}, {
+    name: 'Java',
+    ext: 'java',
+    mode: 'java'
+}, {
+    name: 'HTML',
+    ext: 'html',
+    mode: 'html'
+}, {
+    name: 'Go',
+    ext: 'go',
+    mode: 'golang'
+}, {
+    name: 'C#',
+    ext: 'cs',
+    mode: 'csharp'
+}, {
+    name: 'Clojure',
+    ext: 'clj',
+    mode: 'clojure'
+}, {
+    name: 'JSON',
+    ext: 'json',
+    mode: 'json'
+}, {
+    name: 'Markdown',
+    ext: 'md',
+    mode: 'markdown'
+}, {
+    name: 'Objective C',
+    ext: 'm',
+    mode: 'objectivec'
+}, {
+    name: 'Perl',
+    ext: 'pl',
+    mode: 'perl'
+}, {
+    name: 'Python',
+    ext: 'py',
+    mode: 'python'
+}, {
+    name: 'Ruby',
+    ext: 'rb',
+    mode: 'ruby'
+}, {
+    name: 'SQL',
+    ext: 'sql',
+    mode: 'sql'
+}, {
+    name: 'Swift',
+    ext: 'swift',
+    mode: 'swift'
+}, {
+    name: 'XML',
+    ext: 'xml',
+    mode: 'xml'
+}, {
+    name: 'YAML',
+    ext: 'yml',
+    mode: 'yaml'
+}, {
+    name: 'TypeScript',
+    ext: 'ts',
+    mode: 'typescript'
+}, {
+    name: 'Rust',
+    ext: 'rs',
+    mode: 'rust'
+}, {
+    name: 'PHP',
+    ext: 'php',
+    mode: 'php'
+}, {
+    name: 'Scala',
+    ext: 'scala',
+    mode: 'scala'
+}, {
+    name: 'PowerShell',
+    ext: 'ps',
+    mode: 'powershell'
+}, {
+    name: 'Elm',
+    ext: 'elm',
+    mode: 'elm'
+}, {
+    name: 'CoffeeScript',
+    ext: 'coffee',
+    mode: 'coffee'
+}];

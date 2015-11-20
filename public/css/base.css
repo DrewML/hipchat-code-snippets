@@ -7,16 +7,22 @@ body,
     height: 100%;
 }
 
-body {
-    background: #fff;
-    color: #000;
-    padding: 1%;
+body[data-aui-version] {
     overflow: hidden;
 }
 
-#editor {
-    width: 95%;
-    height: 85%;
+form.language-selection.aui {
+    padding: 1%;
     margin: 0;
+}
+
+#editor {
+    width: 96%;
+    height: 82%;
     padding: 0;
+    margin: 2%;
+}
+
+label {
+    margin-left: 1%;
 }
