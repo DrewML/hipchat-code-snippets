@@ -12,5 +12,9 @@ export function register(app, addon) {
         });
     });
 
+    router.get('/snippet/view/:id', (req, res) => {
+        const id = req.params.id;
+    });
+
     app.use('/ui', router);
 }

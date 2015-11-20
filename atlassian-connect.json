@@ -43,6 +43,26 @@
                         "width": "600px"
                     }
                 }
+            },
+            {
+                "key": "codesnippet.dialog.view",
+                "title": {
+                    "value": "Code Snippet"
+                },
+                "url": "{{localBaseUrl}}/ui/snippet/view/{id}",
+                "options" : {
+                    "primaryAction": {
+                        "key": "codesnippet.button.close",
+                        "name": {
+                            "value": "Close"
+                        }
+                    },
+                    "secondaryActions": [],
+                    "size": {
+                        "height": "400px",
+                        "width": "600px"
+                    }
+                }
             }
         ],
         "action": [

@@ -4,12 +4,15 @@ class LanguageSelector {
     }
 
     onChange(cb) {
-        this.$el.on('change', (...args) => cb(this.value, ...args));
+        this.$el.on('change', (...args) => {
+            this._val = this.$el.val();
+            cb(this._val, ...args);
+        });
         return this;
     }
 
     get value() {
-        return this.$el.val();
+        return this._val;
     }
 }
 

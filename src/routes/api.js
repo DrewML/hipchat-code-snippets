@@ -2,9 +2,16 @@ import cors from 'cors';
 import gistAPI from '../gist-api';
 import hipchatAPI from '../hipchat-api';
 import {Router} from 'express';
+import aceLangs from '../ace-languages';
+import sendNotification from '../snippet-notification';
 
 const gist = gistAPI();
 const hipchat = hipchatAPI();
+
+const langsByMode = aceLangs.reduce((collection, next) => {
+    collection[next.mode] = next;
+    return collection;
+}, {});
 
 export function register(app, addon) {
     const router = Router();
@@ -17,8 +24,10 @@ export function register(app, addon) {
     });
 
     router.post('/snippets/add', (req, res) => {
+        const language = langsByMode[req.body.mode];
         gist.createAnon({
-            code: req.body.code
+            code: req.body.code,
+            ext: language.ext
         }).then(gistRes => {
             res.status(200).send();
 
@@ -27,23 +36,12 @@ export function register(app, addon) {
                 const roomID = req.clientInfo.roomId;
                 const userID = req.identity.userId;
 
-                return hipchat.getRoom(roomID, token).then(room => {
-                    const user = room.participants.find(user => user.id == userID);
-                    return hipchat.sendRoomNotification(roomID, token, {
-                        format: 'html',
-                        message: [
-                            `${user.name} posted a new code snippet`,
-                            `<a href="${gistRes.html_url}">Check it out here</a>`
-                        ].join(' - '),
-                        card: {
-                            style: 'application',
-                            url: gistRes.html_url,
-                            title: `${user.name} just posted a new code snippet`,
-                            format: 'compact',
-                            id: gistRes.id,
-                            date: Date.now()
-                        }
-                    });
+                return sendNotification({
+                    roomID,
+                    token,
+                    userID,
+                    gist: gistRes,
+                    lang: language
                 });
             });
         }).catch(err => genericErrHandler(err, res));
