@@ -1,8 +1,10 @@
 import cors from 'cors';
 import gistAPI from '../gist-api';
+import hipchatAPI from '../hipchat-api';
 import {Router} from 'express';
 
 const gist = gistAPI();
+const hipchat = hipchatAPI();
 
 export function register(app, addon) {
     const router = Router();
@@ -19,8 +21,16 @@ export function register(app, addon) {
             code: req.body.code
         }).then(gistRes => {
             res.status(200).send();
-            
-            // Send Card to HipChat here
+
+            return addon.getAccessToken(req.clientInfo).then(auth => {
+                const token = auth.access_token;
+                const roomId = req.clientInfo.roomId;
+
+                return hipchat.sendRoomNotification(roomId, token, {
+                    format: 'html',
+                    message: `Someone created a gist! <a href="${gistRes.html_url}">Check it out here</a>`
+                });
+            });
         }).catch(err => genericErrHandler(err, res));
     });
 
