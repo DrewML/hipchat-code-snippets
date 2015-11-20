@@ -14,7 +14,7 @@ body {
     overflow: hidden;
 }
 
-textarea {
+#editor {
     width: 95%;
     height: 85%;
     margin: 0;

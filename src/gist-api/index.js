@@ -22,7 +22,7 @@ class GistAPI {
         return this.request('get', { uri: this.getURI(`/${id}`) });
     }
 
-    createAnon({descrip = 'HipChat', isPublic = true, ext = 'js', code}) {
+    createAnon({descrip = 'HipChat', isPublic = false, ext = 'js', code}) {
         return this.request('post', {
             uri: this.getURI(),
             body: {

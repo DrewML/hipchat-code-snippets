@@ -31,7 +31,10 @@ export function register(app, addon) {
                     const user = room.participants.find(user => user.id == userID);
                     return hipchat.sendRoomNotification(roomID, token, {
                         format: 'html',
-                        message: `${user.name} created a gist! <a href="${gistRes.html_url}">Check it out here</a>`,
+                        message: [
+                            `${user.name} posted a new code snippet`,
+                            `<a href="${gistRes.html_url}">Check it out here</a>`
+                        ].join(' - '),
                         card: {
                             style: 'application',
                             url: gistRes.html_url,
