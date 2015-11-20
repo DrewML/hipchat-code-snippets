@@ -1,29 +1,18 @@
-const acpt = $('[name="acpt"]').attr('content');
+import postSnippet from './post-snippet';
+import createEditor from './editor';
+import langSelector from './language-selector';
 
-const editor = ace.edit('editor');
-editor.setTheme('ace/theme/monokai');
-// editor.getSession().setMode('ace/mode/javascript');
+const editor = createEditor({ domID: 'editor' });
 
-function postSnippet() {
-    const code = editor.getValue();
-    return $.ajax({
-        type: 'POST',
-        url: '/api/snippets/add',
-        contentType: 'application/json',
-        headers: { 'X-acpt': acpt },
-        data: JSON.stringify({ code }),
-        processData: false
-    });
-}
-
-const $langSelect = $('#select-language');
-$langSelect.on('change', () => {
-    const langMode = $langSelect.val();
-    editor.getSession().setMode(`ace/mode/${langMode}`);
-});
+const langSelect = langSelector({
+    $el: $('#select-language')
+}).onChange(val => editor.languageMode = val);
 
 AP.register({
     'dialog-button-click': (e, close) => {
-        postSnippet().then(() => close());
+        postSnippet({
+            code: editor.value,
+            mode: langSelect.value
+        }).then(() => close());
     }
 });
