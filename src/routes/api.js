@@ -24,12 +24,22 @@ export function register(app, addon) {
 
             return addon.getAccessToken(req.clientInfo).then(auth => {
                 const token = auth.access_token;
-                const roomId = req.clientInfo.roomId;
+                const roomID = req.clientInfo.roomId;
+                const userID = req.identity.userId;
 
-                return hipchat.getUser(req.identity.userId, token).then(user => {
-                    return hipchat.sendRoomNotification(roomId, token, {
+                return hipchat.getRoom(roomID, token).then(room => {
+                    const user = room.participants.find(user => user.id == userID);
+                    return hipchat.sendRoomNotification(roomID, token, {
                         format: 'html',
-                        message: `Someone created a gist! <a href="${gistRes.html_url}">Check it out here</a>`
+                        message: `${user.name} created a gist! <a href="${gistRes.html_url}">Check it out here</a>`,
+                        card: {
+                            style: 'application',
+                            url: gistRes.html_url,
+                            title: `${user.name} just posted a new code snippet`,
+                            format: 'compact',
+                            id: gistRes.id,
+                            date: Date.now()
+                        }
                     });
                 });
             });

@@ -23,9 +23,9 @@ class HipchatAPI {
         });
     }
 
-    getUser(userID, token) {
+    getRoom(roomID, token) {
         return this.request('get', token, {
-            uri: this.getURI(`/user/${userID}`)
+            uri: this.getURI(`/room/${roomID}`)
         });
     }
 
