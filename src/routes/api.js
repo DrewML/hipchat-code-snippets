@@ -1,12 +1,10 @@
 import cors from 'cors';
 import gistAPI from '../gist-api';
-import hipchatAPI from '../hipchat-api';
 import {Router} from 'express';
 import aceLangs from '../ace-languages';
 import sendNotification from '../snippet-notification';
 
 const gist = gistAPI();
-const hipchat = hipchatAPI();
 
 const langsByMode = aceLangs.reduce((collection, next) => {
     collection[next.mode] = next;
@@ -16,12 +14,6 @@ const langsByMode = aceLangs.reduce((collection, next) => {
 export function register(app, addon) {
     const router = Router();
     [cors(), addon.authenticate()].forEach(fn => router.use(fn));
-
-    router.get('/snippets/:id', (req, res) => {
-        gist.get(req.params.id).then(gistRes => {
-            res.json(gistRes);
-        }).catch(err => genericErrHandler(err, res));
-    });
 
     router.post('/snippets/add', (req, res) => {
         const language = langsByMode[req.body.mode];
