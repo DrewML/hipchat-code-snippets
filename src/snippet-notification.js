@@ -15,12 +15,15 @@ export default function send({roomID, token, userID, gist, lang}) {
             ].join(' - '),
             card: {
                 style: 'application',
+                icon: {
+                    url: 'http://i.imgur.com/2Yto3ew.png'
+                },
                 url: gist.html_url,
                 title: `${user.name} just posted a new ${lang.name} snippet`,
                 description: {
                     format: 'html',
                     value: generateLink({
-                        text: 'Click here to see it',
+                        text: 'You can view it by clicking here',
                         id: gist.id,
                         userName: user.name,
                         language: lang.name

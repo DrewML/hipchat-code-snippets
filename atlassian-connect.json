@@ -47,7 +47,7 @@
             {
                 "key": "codesnippet.dialog.view",
                 "title": {
-                    "value": "Code Snippet"
+                    "value": "Loading Snippet"
                 },
                 "url": "{{localBaseUrl}}/ui/snippet/view/{id}",
                 "options" : {

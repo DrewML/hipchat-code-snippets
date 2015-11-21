@@ -24,9 +24,6 @@ export function register(app, addon) {
             const file = gistRes.files[Object.keys(gistRes.files)[0]];
             const ext = file.filename.replace('hipchat.', '');
 
-            console.log('ext is: ' + ext);
-            console.log('mode is: ' + langsByExt[ext]);
-
             res.render('dialog/view', {
                 code: file.content,
                 mode: langsByExt[ext].mode
