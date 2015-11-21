@@ -24,7 +24,8 @@ form.language-selection.aui {
 }
 
 #editor[data-language-mode] {
-    height: 94%;
+    height: 87%;
+    margin-bottom: 1%;
 }
 
 label {
@@ -37,6 +38,10 @@ label {
     position: relative;
     top: 2px;
     font-weight: 600;
+}
+
+.submit-issue.view {
+    margin-right: 14px;
 }
 
 .submit-issue:hover,

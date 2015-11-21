@@ -3,6 +3,7 @@ class Editor {
         this.domEl = $('#domEl');
         this.editor = ace.edit(domID);
         this.editor.setTheme(`ace/theme/${theme}`);
+        this.editor.setShowPrintMargin(false);
 
         if (readOnly) this.editor.setReadOnly(true);
     }
