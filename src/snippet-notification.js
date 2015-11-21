@@ -8,6 +8,7 @@ export default function send({roomID, token, userID, gist, lang}) {
         const user = room.participants.find(user => user.id == userID);
         return hipchat.sendRoomNotification(roomID, token, {
             format: 'html',
+            color: 'gray',
             message: [
                 `${user.name} posted a new ${lang.name} snippet`,
                 `<a href="${gist.html_url}">Check it out here</a>`
@@ -18,7 +19,12 @@ export default function send({roomID, token, userID, gist, lang}) {
                 title: `${user.name} just posted a new ${lang.name} snippet`,
                 description: {
                     format: 'html',
-                    value: generateLink('Click here to see it', gist.id)
+                    value: generateLink({
+                        text: 'Click here to see it',
+                        id: gist.id,
+                        userName: user.name,
+                        language: lang.name
+                    })
                 },
                 format: 'compact',
                 id: gist.id,
@@ -28,9 +34,10 @@ export default function send({roomID, token, userID, gist, lang}) {
     });
 }
 
-function generateLink(text, id) {
+function generateLink({text, id, userName, language}) {
     const opts = escapeHTML(JSON.stringify({
-        urlTemplateValues: { id }
+        urlTemplateValues: { id },
+        parameters: { userName, language }
     }));
 
     return [

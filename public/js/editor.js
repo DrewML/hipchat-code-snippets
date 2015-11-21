@@ -1,8 +1,10 @@
 class Editor {
-    constructor({domID, theme = 'monokai'}) {
+    constructor({domID, theme = 'monokai', readOnly}) {
         this.domEl = $('#domEl');
         this.editor = ace.edit(domID);
         this.editor.setTheme(`ace/theme/${theme}`);
+
+        if (readOnly) this.editor.setReadOnly(true);
     }
 
     get value() {
