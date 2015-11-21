@@ -4,8 +4,11 @@ const rollup = require('rollup').rollup;
 const rollupBabel = require('rollup-plugin-babel');
 
 const bundleConfig = [{
-    entry: './public/js/bundle/index.js',
-    dest: './public/dist/bundle.js'
+    entry: './public/js/add/index.js',
+    dest: './public/dist/add.js'
+}, {
+    entry: './public/js/view/index.js',
+    dest: './public/dist/view.js'
 }];
 
 const bundles = bundleConfig.map(config => {

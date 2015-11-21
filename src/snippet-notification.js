@@ -9,7 +9,7 @@ export default function send({roomID, token, userID, gist, lang}) {
         return hipchat.sendRoomNotification(roomID, token, {
             format: 'html',
             message: [
-                `${user.name} posted a new code ${lang.name} snippet`,
+                `${user.name} posted a new ${lang.name} snippet`,
                 `<a href="${gist.html_url}">Check it out here</a>`
             ].join(' - '),
             card: {

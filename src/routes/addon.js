@@ -11,16 +11,6 @@ export function register(app, addon) {
         });
     });
 
-    // router.get('/glance', cors(), addon.authenticate(), (req, res) => {
-    //     let glancedata = {
-    //         label: {
-    //             type: 'html',
-    //             value: 'My Sample Glance'
-    //         }
-    //     };
-    //     res.send(glancedata);
-    // });
-
     router.get('/config', addon.authenticate(), (req, res) => {
         res.render('config', req.context);
     });

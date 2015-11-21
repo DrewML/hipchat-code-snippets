@@ -23,6 +23,10 @@ form.language-selection.aui {
     margin: 2%;
 }
 
+#editor[data-language-mode] {
+    height: 94%;
+}
+
 label {
     margin-left: 1%;
 }

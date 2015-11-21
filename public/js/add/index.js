@@ -1,7 +1,7 @@
-import postSnippet from './post-snippet';
-import createEditor from './editor';
-import langSelector from './language-selector';
-import * as dialogBtn from './dialog-button';
+import postSnippet from '../post-snippet';
+import createEditor from '../editor';
+import langSelector from '../language-selector';
+import * as dialogBtn from '../dialog-button';
 
 const editor = createEditor({ domID: 'editor' });
 
