@@ -30,3 +30,22 @@ form.language-selection.aui {
 label {
     margin-left: 1%;
 }
+
+.submit-issue {
+    float: right;
+    margin-right: 8px;
+    position: relative;
+    top: 2px;
+    font-weight: 600;
+}
+
+.submit-issue:hover,
+.submit-issue:focus {
+    text-decoration: none;
+}
+
+.submit-issue img {
+    width: 24px;
+    position: relative;
+    top: 3px;
+}
