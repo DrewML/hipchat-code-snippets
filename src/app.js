@@ -47,7 +47,7 @@ hbs.registerHelper('furl', url => app.locals.furl(url));
 if (!process.env.PWD) process.env.PWD = process.cwd(); // Fix expiry on Windows
 
 if (devEnv) app.use(errorHandler());
-multiUse(app, [
+multiUse(app,
     morgan(devEnv ? 'dev' : 'common'),
     bodyParser.urlencoded({ extended: false }),
     bodyParser.json(),
@@ -56,7 +56,7 @@ multiUse(app, [
     addon.middleware(),
     express.static(staticDir),
     ...Object.keys(middleware).map(key => middleware[key].default)
-]);
+);
 
 // Register routes
 Object.keys(routes).map(key => routes[key].register(app, addon));

@@ -1,5 +1,6 @@
 import cors from 'cors';
 import gistAPI from '../gist-api';
+import {multiUse} from '../utils';
 import {Router} from 'express';
 import aceLangs from '../ace-languages';
 import sendNotification from '../snippet-notification';
@@ -13,7 +14,7 @@ const langsByMode = aceLangs.reduce((collection, next) => {
 
 export function register(app, addon) {
     const router = Router();
-    [cors(), addon.authenticate()].forEach(fn => router.use(fn));
+    multiUse(router, cors(), addon.authenticate());
 
     router.post('/snippets/add', (req, res) => {
         const language = langsByMode[req.body.mode];

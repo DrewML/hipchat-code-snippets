@@ -2,6 +2,7 @@ import cors from 'cors';
 import gistAPI from '../gist-api';
 import {Router} from 'express';
 import aceLangs from '../ace-languages';
+import {multiUse} from '../utils';
 
 const gist = gistAPI();
 const langsByExt = aceLangs.reduce((collection, next) => {
@@ -11,7 +12,7 @@ const langsByExt = aceLangs.reduce((collection, next) => {
 
 export function register(app, addon) {
     const router = Router();
-    [cors(), addon.authenticate()].forEach(fn => router.use(fn));
+    multiUse(router, cors(), addon.authenticate());
 
     router.get('/add-snippet', (req, res) => {
         res.render('dialog/add', {
